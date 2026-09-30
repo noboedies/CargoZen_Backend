@@ -46,4 +46,18 @@ public class DriverService {
         driver.setStatus("pending");
         return driver;
     }
+
+    public Driver findByEmail(String email) {
+        return driverRepo.findByEmail(email);
+    }
+
+    public boolean setStatus(String status, String email) {
+        Driver d = driverRepo.findByEmail(email);
+        if(d != null){
+            d.setStatus(status);
+            driverRepo.save(d);
+            return true;
+        }
+        return false;
+    }
 }
