@@ -15,12 +15,12 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    @PostMapping
+    @PostMapping("/login")
     public Admin login(@RequestBody Admin admin){
         return adminService.login(admin);
     }
 
-    @GetMapping
+    @GetMapping("/getAllDrivers/{status}")
     public List<Driver> getAllDrivers(@PathVariable String status){
         return adminService.getAllDrivers(status);
     }

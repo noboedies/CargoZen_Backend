@@ -2,16 +2,16 @@ package com.tausif.CargoZen_Backend.controller;
 
 
 import com.tausif.CargoZen_Backend.dto.CustomerRegisterDto;
+import com.tausif.CargoZen_Backend.entity.Customer;
 import com.tausif.CargoZen_Backend.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class CargozenController {
+@RequestMapping("/customer")
+public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
@@ -21,4 +21,8 @@ public class CargozenController {
         return ResponseEntity.ok(customerService.register(customerRegisterDto));
     }
 
+    @GetMapping("/findByEmail/{email}")
+    public Customer findByEmail(@PathVariable String email){
+        return customerService.findByEmail(email);
+    }
 }

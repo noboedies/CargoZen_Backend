@@ -41,4 +41,8 @@ public class CustomerService {
         customer.setCratedAt(LocalDateTime.now());
         return customer;
     }
+
+    public Customer findByEmail(String email) {
+        return customerRepo.findByEmail(email);
+    }
 }
